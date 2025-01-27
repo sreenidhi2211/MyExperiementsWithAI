@@ -1,0 +1,123 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #282c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Game container with background image */
+.game-container {
+    background-image: url('https://i0.wp.com/nerdtropolis.com/wp-content/uploads/2023/12/Rock-Paper-Scissors-on-Nickelodeon.jpg?resize=1024%2C589&ssl=1');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s;
+    overflow: hidden;
+    position: relative; /* For any overlays */
+    color: white;
+}
+
+/* Dark overlay to improve text readability over the background image */
+.game-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    border-radius: 15px;
+    z-index: 0; /* Send the overlay to the back */
+}
+
+.game-container:hover {
+    transform: scale(1.02);
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #61dafb;
+    position: relative; /* Above overlay */
+    z-index: 1; /* Ensure it's above the background overlay */
+}
+
+.choices {
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.choice {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid transparent;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+
+.choice:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    border-color: #61dafb;
+}
+
+.choice:active {
+    transform: scale(0.95);
+}
+
+.result {
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.result.fade-in {
+    opacity: 1;
+}
+
+#computer-choice .loading {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+#play-again {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: none; /* Initially hidden */
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+#play-again:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+}
